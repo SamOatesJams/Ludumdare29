@@ -38,4 +38,15 @@ public class Pickupable : MonoBehaviour {
             this.transform.parent = m_originalParent;
         }
     }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.tag != "PickupCollider")
+        {
+            return;
+        }
+
+        this.rigidbody.isKinematic = false;
+        this.transform.parent = m_originalParent;
+    }
 }
