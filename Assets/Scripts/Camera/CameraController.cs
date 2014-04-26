@@ -13,6 +13,8 @@ public class CameraController : MonoBehaviour {
     /// </summary>
     public float MovementSpeed = 1.0f;
 
+    public bool IsModeEnabled { get; set; }
+
 	// Use this for initialization
 	void Start () {
 
@@ -20,9 +22,12 @@ public class CameraController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
-        HandleRotation();
-        HandleMovement();
+
+        if (IsModeEnabled)
+        {
+            HandleRotation();
+            HandleMovement();
+        }
 
 	}
 
