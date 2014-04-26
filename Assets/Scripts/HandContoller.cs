@@ -36,7 +36,21 @@ public class HandContoller : MonoBehaviour {
     /// <summary>
     /// 
     /// </summary>
+    public Transform ThumbRoot = null;
+
+    private bool m_isThumbGripping = false;
+
+    public float ThumbGripAmount = 20.0f;
+
+    /// <summary>
+    /// 
+    /// </summary>
     public bool IsModeEnabled { get; set; }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public bool IsThumbPressed { get; private set; }
 
     /// <summary>
     /// 
@@ -71,6 +85,40 @@ public class HandContoller : MonoBehaviour {
             return;
         }
 
+        HandleMovement();
+        HandleFingers();
+	}
+
+    private void HandleFingers()
+    {
+        HandleThumb();
+    }
+
+    private void HandleThumb()
+    {
+
+        this.IsThumbPressed = Input.GetButton("AButton");
+        if (!this.IsThumbPressed)
+        {
+            if (m_isThumbGripping)
+            {
+                this.ThumbRoot.localEulerAngles = this.ThumbRoot.localEulerAngles + new Vector3(0.0f, this.ThumbGripAmount, 0.0f);
+                m_isThumbGripping = false;
+            }
+            return;
+        }
+
+        if (!m_isThumbGripping)
+        {
+            this.ThumbRoot.localEulerAngles = this.ThumbRoot.localEulerAngles - new Vector3(0.0f, this.ThumbGripAmount, 0.0f);
+            m_isThumbGripping = true;
+        }
+        
+
+    }
+
+    private void HandleMovement()
+    {
         float armRotation = Input.GetAxis("RotationHorizontal");
         float horizontalMovement = Input.GetAxis("MoveHorizontal");
         float verticalMovement = Input.GetAxis("MoveVertical") * this.MoveAmount;
@@ -82,7 +130,7 @@ public class HandContoller : MonoBehaviour {
         m_totalArmElveation += armVertical;
 
         Vector3 direction = this.transform.parent.transform.TransformDirection(Vector3.forward);
-                
+
         // Arm rotation
         Vector3 oldRotation = this.transform.localEulerAngles;
         this.transform.localEulerAngles = this.transform.localEulerAngles + new Vector3(0.0f, 0.0f, armRotation);
@@ -138,5 +186,5 @@ public class HandContoller : MonoBehaviour {
             this.transform.position = oldPosition;
             m_totalArmElveation = this.ArmElevationRange.x;
         }
-	}
+    }
 }
