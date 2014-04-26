@@ -8,6 +8,11 @@ public class CameraController : MonoBehaviour {
     /// </summary>
     public float RotateSpeed = 1.0f;
 
+    /// <summary>
+    /// 
+    /// </summary>
+    public float MovementSpeed = 1.0f;
+
 	// Use this for initialization
 	void Start () {
 
@@ -26,10 +31,14 @@ public class CameraController : MonoBehaviour {
     /// </summary>
     private void HandleMovement()
     {
-        float horizontalMovement = Input.GetAxis("MoveHorizontal");
-        float verticalMovement = Input.GetAxis("MoveVertical");
+        float horizontalMovement = Input.GetAxis("MoveHorizontal") * MovementSpeed;
+        float verticalMovement = Input.GetAxis("MoveVertical") * MovementSpeed;
 
-        this.rigidbody.AddForce(new Vector3(horizontalMovement, 0.0f, verticalMovement));
+        Vector3 direction = this.transform.TransformDirection(Vector3.forward);
+        Vector3 leftRight = this.transform.TransformDirection(Vector3.right);
+
+        this.rigidbody.AddForce(direction * verticalMovement);
+        this.rigidbody.AddForce(leftRight * horizontalMovement);
 
     }
 
