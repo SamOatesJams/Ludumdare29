@@ -29,6 +29,30 @@ ModelImporter:
     100046: Bone024
     100048: //RootNode
     100050: Palm
+    100052: Bone-Thumb-00
+    100054: Bone-Thumb-01
+    100056: Bone-Thumb-02
+    100058: Bone-Thumb-03
+    100060: Bone-Finger-00-00
+    100062: Bone-Finger-00-01
+    100064: Bone-Finger-00-02
+    100066: Bone-Finger-00-03
+    100068: Bone-Finger-00-04
+    100070: Bone-Finger-01-00
+    100072: Bone-Finger-01-01
+    100074: Bone-Finger-01-02
+    100076: Bone-Finger-01-03
+    100078: Bone-Finger-01-04
+    100080: Bone-Finger-02-00
+    100082: Bone-Finger-02-01
+    100084: Bone-Finger-02-02
+    100086: Bone-Finger-02-03
+    100088: Bone-Finger-02-04
+    100090: Bone-Finger-03-00
+    100092: Bone-Finger-03-01
+    100094: Bone-Finger-03-02
+    100096: Bone-Finger-03-03
+    100098: Bone-Finger-03-04
     400000: Bone001
     400002: Bone002
     400004: Bone003
@@ -55,6 +79,30 @@ ModelImporter:
     400046: Bone024
     400048: //RootNode
     400050: Palm
+    400052: Bone-Thumb-00
+    400054: Bone-Thumb-01
+    400056: Bone-Thumb-02
+    400058: Bone-Thumb-03
+    400060: Bone-Finger-00-00
+    400062: Bone-Finger-00-01
+    400064: Bone-Finger-00-02
+    400066: Bone-Finger-00-03
+    400068: Bone-Finger-00-04
+    400070: Bone-Finger-01-00
+    400072: Bone-Finger-01-01
+    400074: Bone-Finger-01-02
+    400076: Bone-Finger-01-03
+    400078: Bone-Finger-01-04
+    400080: Bone-Finger-02-00
+    400082: Bone-Finger-02-01
+    400084: Bone-Finger-02-02
+    400086: Bone-Finger-02-03
+    400088: Bone-Finger-02-04
+    400090: Bone-Finger-03-00
+    400092: Bone-Finger-03-01
+    400094: Bone-Finger-03-02
+    400096: Bone-Finger-03-03
+    400098: Bone-Finger-03-04
     4300000: Palm
     9500000: //RootNode
     13700000: Palm
