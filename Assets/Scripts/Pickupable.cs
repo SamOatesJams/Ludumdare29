@@ -26,16 +26,34 @@ public class Pickupable : MonoBehaviour {
             return;
         }
 
+        bool isThumb = other.collider.name == "thumb-trigger";
         HandContoller controller = other.transform.parent.GetComponent<HandContoller>();
-        if (controller.IsThumbPressed)
+
+        if (isThumb)
         {
-            this.rigidbody.isKinematic = true;
-            this.transform.parent = other.transform;
+            if (controller.IsThumbPressed)
+            {
+                this.rigidbody.isKinematic = true;
+                this.transform.parent = other.transform;
+            }
+            else
+            {
+                this.rigidbody.isKinematic = false;
+                this.transform.parent = m_originalParent;
+            }
         }
         else
         {
-            this.rigidbody.isKinematic = false;
-            this.transform.parent = m_originalParent;
+            if (controller.AllFingersPressed)
+            {
+                this.rigidbody.isKinematic = true;
+                this.transform.parent = other.transform;
+            }
+            else
+            {
+                this.rigidbody.isKinematic = false;
+                this.transform.parent = m_originalParent;
+            }
         }
     }
 

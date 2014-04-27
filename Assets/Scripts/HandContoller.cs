@@ -42,6 +42,14 @@ public class HandContoller : MonoBehaviour {
 
     public float ThumbGripAmount = 20.0f;
 
+    public Transform[] FingerRoot = new Transform[4];
+
+    private bool[] m_isFingerGripping = new bool[4];
+
+    public float FingerGripAmount = 60.0f;
+
+    public bool AllFingersPressed { get; private set; }
+
     /// <summary>
     /// 
     /// </summary>
@@ -86,12 +94,61 @@ public class HandContoller : MonoBehaviour {
         }
 
         HandleMovement();
-        HandleFingers();
+        HandleHand();
 	}
+
+    private void HandleHand()
+    {
+        HandleThumb();
+        HandleFingers();
+    }
 
     private void HandleFingers()
     {
-        HandleThumb();
+        bool[] isPressed = new bool[] {
+            Input.GetButton("LBButton"),
+            Input.GetAxis("LeftTrigger") > 0.0f,
+            Input.GetButton("RBButton"),
+            Input.GetAxis("RightTrigger") > 0.0f
+        };
+
+        bool allPressed = true;
+
+        for (int fingerIndex = 0; fingerIndex < this.FingerRoot.Length; ++fingerIndex)
+        {
+            if (isPressed[fingerIndex] && !m_isFingerGripping[fingerIndex])
+            {
+                m_isFingerGripping[fingerIndex] = true;
+                TurnFinger(this.FingerRoot[fingerIndex], new Vector3(0.0f, this.FingerGripAmount, 0.0f), true);
+            }
+            else if (!isPressed[fingerIndex])
+            {
+                allPressed = false;
+                if (m_isFingerGripping[fingerIndex])
+                {
+                    m_isFingerGripping[fingerIndex] = false;
+                    TurnFinger(this.FingerRoot[fingerIndex], -new Vector3(0.0f, this.FingerGripAmount, 0.0f), false);
+                }                
+            }
+        }
+
+        this.AllFingersPressed = allPressed;
+    }
+
+    private void TurnFinger(Transform bone, Vector3 amount, bool pressed)
+    {
+        
+        bone.localEulerAngles = bone.localEulerAngles + amount;
+
+        if (bone.collider != null)
+        {
+            bone.collider.enabled = !pressed;
+        }
+        
+        foreach (Transform child in bone)
+        {
+            TurnFinger(child, amount, pressed);
+        }
     }
 
     private void HandleThumb()
@@ -103,6 +160,7 @@ public class HandContoller : MonoBehaviour {
             if (m_isThumbGripping)
             {
                 this.ThumbRoot.localEulerAngles = this.ThumbRoot.localEulerAngles + new Vector3(0.0f, this.ThumbGripAmount, 0.0f);
+                TurnFinger(this.ThumbRoot, Vector3.zero, false);
                 m_isThumbGripping = false;
             }
             return;
@@ -111,6 +169,7 @@ public class HandContoller : MonoBehaviour {
         if (!m_isThumbGripping)
         {
             this.ThumbRoot.localEulerAngles = this.ThumbRoot.localEulerAngles - new Vector3(0.0f, this.ThumbGripAmount, 0.0f);
+            TurnFinger(this.ThumbRoot, Vector3.zero, true);
             m_isThumbGripping = true;
         }
         
