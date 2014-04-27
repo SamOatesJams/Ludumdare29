@@ -27,6 +27,7 @@ public class Egg : MonoBehaviour {
             foreach (Transform child in this.transform)
             {
                 child.rigidbody.isKinematic = false;
+                child.rigidbody.useGravity = true;
                 child.collider.enabled = true;
                 child.renderer.enabled = true;
             }

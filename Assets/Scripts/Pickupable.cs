@@ -35,6 +35,11 @@ public class Pickupable : MonoBehaviour {
             {
                 this.rigidbody.isKinematic = true;
                 this.transform.parent = other.transform;
+                BowlTrigger bowlTrigger = this.GetComponentInChildren<BowlTrigger>();
+                if (bowlTrigger != null)
+                {
+                    bowlTrigger.OnPickUp();
+                }
             }
             else
             {
@@ -48,6 +53,11 @@ public class Pickupable : MonoBehaviour {
             {
                 this.rigidbody.isKinematic = true;
                 this.transform.parent = other.transform;
+                BowlTrigger bowlTrigger = this.GetComponentInChildren<BowlTrigger>();
+                if (bowlTrigger != null)
+                {
+                    bowlTrigger.OnPickUp();
+                }
             }
             else
             {
