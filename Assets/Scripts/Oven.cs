@@ -8,6 +8,8 @@ public class Oven : MonoBehaviour {
     /// </summary>
     public Transform OvenDoor = null;
 
+    public bool CanWin { get; set; }
+
     /// <summary>
     /// 
     /// </summary>
@@ -45,6 +47,11 @@ public class Oven : MonoBehaviour {
                 m_isOpeneing = false;
                 m_requiresClose = false;
                 m_closedZ = 0.0f;
+
+                if (this.CanWin)
+                {
+                    Camera.main.GetComponent<UI>().HasWon = true;
+                }
             }
 
             this.OvenDoor.transform.localEulerAngles = Vector3.Lerp(new Vector3(0.0f, 0.0f, this.OpenedZ), new Vector3(0.0f, 0.0f, 0.0f), time);

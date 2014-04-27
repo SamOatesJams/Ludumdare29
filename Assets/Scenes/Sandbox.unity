@@ -1417,6 +1417,7 @@ GameObject:
   - 124: {fileID: 236723344}
   - 81: {fileID: 236723343}
   - 45: {fileID: 236723348}
+  - 114: {fileID: 236723349}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1493,6 +1494,22 @@ Skybox:
   m_GameObject: {fileID: 236723342}
   m_Enabled: 1
   m_CustomSkybox: {fileID: 2100000, guid: 53412155bc1016547b1a77b2333c0380, type: 2}
+--- !u!114 &236723349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 236723342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ca9e03d9cd279e4e89887f31908b6c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EggTexture: {fileID: 2800000, guid: 2c71190549b57784d8407c71ac2b16e5, type: 3}
+  SugarTexture: {fileID: 2800000, guid: 19c5edc8bb4d1204d8d569a475031e0f, type: 3}
+  FlourTexture: {fileID: 2800000, guid: 15b5d5e782d112d4088324d378d8c9b3, type: 3}
+  ButterTexture: {fileID: 2800000, guid: 57f433b37cabd2d4ca934e944f41058b, type: 3}
+  Bowl: {fileID: 317334830}
 --- !u!1 &247258488
 GameObject:
   m_ObjectHideFlags: 0
@@ -2254,8 +2271,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredEggs: 2
-  RequiredFlour: 10
-  RequiredSugar: 10
+  RequiredFlour: 100
+  RequiredSugar: 100
   RequiredButter: 1
 --- !u!1 &326028312
 GameObject:
@@ -2533,6 +2550,45 @@ Prefab:
   m_RootGameObject: {fileID: 222051498}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &355194708
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 355194709}
+  - 65: {fileID: 355194710}
+  m_Layer: 0
+  m_Name: OvenCollisionT
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &355194709
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 355194708}
+  m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106829}
+  m_LocalPosition: {x: .00628321525, y: -0, z: .423846781}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 407483614}
+--- !u!65 &355194710
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 355194708}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .129999995, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &368966822
 GameObject:
   m_ObjectHideFlags: 0
@@ -2784,6 +2840,7 @@ Transform:
   - {fileID: 2009607359}
   - {fileID: 189235185}
   - {fileID: 368966823}
+  - {fileID: 355194709}
   - {fileID: 635497048}
   - {fileID: 842111941}
   - {fileID: 1986934265}
@@ -4178,8 +4235,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 746724194}
-  - 135: {fileID: 746724196}
   - 114: {fileID: 746724195}
+  - 65: {fileID: 746724196}
   m_Layer: 0
   m_Name: OpenTrigger
   m_TagString: Untagged
@@ -4194,7 +4251,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 746724193}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.186544895, y: 0, z: .90549624}
+  m_LocalPosition: {x: -.54408741, y: .423322082, z: .791268945}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1748704190}
@@ -4211,8 +4268,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OvenDoor: {fileID: 1223374707}
   OpenedZ: 150
---- !u!135 &746724196
-SphereCollider:
+--- !u!65 &746724196
+BoxCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -4221,7 +4278,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &750508944
 Prefab:
@@ -4745,7 +4802,7 @@ ParticleAnimator:
     rgba: 16777215
   worldRotationAxis: {x: 0, y: 0, z: 0}
   localRotationAxis: {x: 0, y: 0, z: 0}
-  sizeGrow: 1.66999996
+  sizeGrow: .100000001
   rndForce: {x: 0, y: 0, z: 0}
   force: {x: 0, y: 0, z: 0}
   damping: .886969447
@@ -4761,12 +4818,12 @@ EllipsoidParticleEmitter:
   serializedVersion: 2
   m_Enabled: 1
   m_Emit: 0
-  minSize: .100000001
-  maxSize: .300000012
+  minSize: .00999999978
+  maxSize: .200000003
   minEnergy: 1.5
   maxEnergy: 1.5
-  minEmission: 400
-  maxEmission: 500
+  minEmission: 20
+  maxEmission: 40
   worldVelocity: {x: 0, y: 0, z: 0}
   localVelocity: {x: 0, y: 0, z: 1}
   rndVelocity: {x: 0, y: 0, z: 0}
@@ -4777,7 +4834,7 @@ EllipsoidParticleEmitter:
   rndRotation: 1
   Simulate in Worldspace?: 0
   m_OneShot: 0
-  m_Ellipsoid: {x: .100000001, y: .100000001, z: .100000001}
+  m_Ellipsoid: {x: .00999999978, y: .00999999978, z: .00999999978}
   m_MinEmitterRange: 0
 --- !u!1 &842111940
 GameObject:
@@ -4933,7 +4990,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FlourEmitter: {fileID: 840263981}
   UpsideDownDelta: .600000024
-  m_amount: 100000
+  m_amount: 1000
 --- !u!114 &856090794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7536,19 +7593,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1500000, guid: c31fa1a55f0c141ccb34e61d6bb78569, type: 2}
       propertyPath: maxSize
-      value: .300000012
+      value: .200000003
       objectReference: {fileID: 0}
     - target: {fileID: 1500000, guid: c31fa1a55f0c141ccb34e61d6bb78569, type: 2}
       propertyPath: m_Ellipsoid.x
-      value: .100000001
+      value: .00999999978
       objectReference: {fileID: 0}
     - target: {fileID: 1500000, guid: c31fa1a55f0c141ccb34e61d6bb78569, type: 2}
       propertyPath: m_Ellipsoid.y
-      value: .100000001
+      value: .00999999978
       objectReference: {fileID: 0}
     - target: {fileID: 1500000, guid: c31fa1a55f0c141ccb34e61d6bb78569, type: 2}
       propertyPath: m_Ellipsoid.z
-      value: .100000001
+      value: .00999999978
       objectReference: {fileID: 0}
     - target: {fileID: 2600000, guid: c31fa1a55f0c141ccb34e61d6bb78569, type: 2}
       propertyPath: m_CastShadows
@@ -7560,19 +7617,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1200000, guid: c31fa1a55f0c141ccb34e61d6bb78569, type: 2}
       propertyPath: sizeGrow
-      value: 1.66999996
-      objectReference: {fileID: 0}
-    - target: {fileID: 1500000, guid: c31fa1a55f0c141ccb34e61d6bb78569, type: 2}
-      propertyPath: minSize
       value: .100000001
       objectReference: {fileID: 0}
     - target: {fileID: 1500000, guid: c31fa1a55f0c141ccb34e61d6bb78569, type: 2}
+      propertyPath: minSize
+      value: .00999999978
+      objectReference: {fileID: 0}
+    - target: {fileID: 1500000, guid: c31fa1a55f0c141ccb34e61d6bb78569, type: 2}
       propertyPath: minEmission
-      value: 400
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1500000, guid: c31fa1a55f0c141ccb34e61d6bb78569, type: 2}
       propertyPath: maxEmission
-      value: 500
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 1500000, guid: c31fa1a55f0c141ccb34e61d6bb78569, type: 2}
       propertyPath: localVelocity.z
@@ -7962,7 +8019,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FlourEmitter: {fileID: 304082376}
   UpsideDownDelta: .600000024
-  m_amount: 100000
+  m_amount: 1000
 --- !u!1 &1493941479
 GameObject:
   m_ObjectHideFlags: 0
@@ -9665,8 +9722,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 1986934265}
   - 65: {fileID: 1986934266}
+  - 114: {fileID: 1986934267}
   m_Layer: 0
-  m_Name: OvenCollisionR
+  m_Name: OvenWinTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9679,7 +9737,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1986934264}
   m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106829}
-  m_LocalPosition: {x: .00628333446, y: -1.17581656e-07, z: .423846424}
+  m_LocalPosition: {x: .00628333446, y: -.171351835, z: .000729302119}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 407483614}
@@ -9690,11 +9748,23 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1986934264}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: .129999995, y: 1, z: 1}
+  m_Size: {x: .129999995, y: .5, z: .5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1986934267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1986934264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de42ae9d37dc8a3428d33533f8cb5be4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Oven: {fileID: 746724195}
 --- !u!1 &1988030466
 GameObject:
   m_ObjectHideFlags: 0

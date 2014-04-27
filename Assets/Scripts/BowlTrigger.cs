@@ -12,7 +12,7 @@ public class BowlTrigger : MonoBehaviour {
     /// <summary>
     /// 
     /// </summary>
-    private int m_noofEggs = 0;
+    public int m_noofEggs { get; private set; }
 
     /// <summary>
     /// 
@@ -22,7 +22,7 @@ public class BowlTrigger : MonoBehaviour {
     /// <summary>
     /// 
     /// </summary>
-    private float m_noofSugar = 0.0f;
+    public float m_noofSugar { get; private set; }
 
     /// <summary>
     /// 
@@ -32,7 +32,7 @@ public class BowlTrigger : MonoBehaviour {
     /// <summary>
     /// 
     /// </summary>
-    private float m_noofFlour = 0.0f;
+    public float m_noofFlour { get; private set; }
 
     /// <summary>
     /// 
@@ -47,7 +47,7 @@ public class BowlTrigger : MonoBehaviour {
     /// <summary>
     /// 
     /// </summary>
-    private int m_noofButter = 0;
+    public int m_noofButter { get; private set; }
 
     /// <summary>
     /// 
@@ -111,7 +111,7 @@ public class BowlTrigger : MonoBehaviour {
     {
         if (other.name == "FlourEmitter")
         {
-            m_noofFlour += 0.02f;
+            m_noofFlour += 0.2f;
             if (m_noofFlour < this.RequiredFlour)
             {
                 m_flourMound.localScale = m_flourMound.localScale + new Vector3(0.002f, 0.002f, 0.002f);
@@ -121,10 +121,10 @@ public class BowlTrigger : MonoBehaviour {
 
         if (other.name == "SugarEmitter")
         {
-            m_noofSugar += 0.02f;
+            m_noofSugar += 0.4f;
             if (m_noofSugar < this.RequiredSugar)
             {
-                m_flourMound.localScale = m_flourMound.localScale + new Vector3(0.001f, 0.001f, 0.001f);
+                m_flourMound.localScale = m_flourMound.localScale + new Vector3(0.0015f, 0.0015f, 0.0015f);
             }
             return;
         }

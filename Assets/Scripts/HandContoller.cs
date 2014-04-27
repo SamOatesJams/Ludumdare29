@@ -112,16 +112,18 @@ public class HandContoller : MonoBehaviour {
             Input.GetAxis("RightTrigger") > 0.0f
         };
 
+        bool allFingers = Input.GetButton("AllFingers");
+
         bool allPressed = true;
 
         for (int fingerIndex = 0; fingerIndex < this.FingerRoot.Length; ++fingerIndex)
         {
-            if (isPressed[fingerIndex] && !m_isFingerGripping[fingerIndex])
+            if ((isPressed[fingerIndex] || allFingers) && !m_isFingerGripping[fingerIndex])
             {
                 m_isFingerGripping[fingerIndex] = true;
                 TurnFinger(this.FingerRoot[fingerIndex], new Vector3(0.0f, this.FingerGripAmount, 0.0f), true);
             }
-            else if (!isPressed[fingerIndex])
+            else if (!isPressed[fingerIndex] && !allFingers)
             {
                 allPressed = false;
                 if (m_isFingerGripping[fingerIndex])
