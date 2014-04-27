@@ -31,6 +31,7 @@ public class Bowl : MonoBehaviour {
             m_hasSmashed = true;
             GetComponent<MeshFilter>().mesh = this.LowQualityBowl;
             this.collider.enabled = false;
+            this.GetComponent<AudioSource>().Play();
             m_smashable.SmashObject();
         }
     }

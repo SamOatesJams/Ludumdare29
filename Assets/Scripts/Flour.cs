@@ -9,9 +9,11 @@ public class Flour : MonoBehaviour {
 
     public float m_amount = 100.0f;
 
+    private AudioSource m_audio = null;
+
 	// Use this for initialization
 	void Start () {
-	
+        m_audio = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -20,6 +22,7 @@ public class Flour : MonoBehaviour {
         if (m_amount <= 0.0f)
         {
             FlourEmitter.GetComponent<ParticleEmitter>().emit = false;
+            m_audio.Stop();
             return;
         }
 
@@ -27,10 +30,15 @@ public class Flour : MonoBehaviour {
         {
             FlourEmitter.GetComponent<ParticleEmitter>().emit = true;
             m_amount -= 0.2f;
+            if (!m_audio.isPlaying)
+            {
+                m_audio.Play();
+            }
         }
         else
         {
             FlourEmitter.GetComponent<ParticleEmitter>().emit = false;
+            m_audio.Stop();
         }
 	}
 }

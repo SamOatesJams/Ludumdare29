@@ -10,6 +10,9 @@ public class UI : MonoBehaviour {
 
     public BowlTrigger Bowl = null;
 
+    public AudioClip WinAudio = null;
+    public AudioClip LooseAudio = null;
+
     public bool HasWon { get; set; }
 
     private float m_imageSize;
@@ -55,8 +58,8 @@ public class UI : MonoBehaviour {
         if (HasWon)
         {
             int ingredientAccuracy = (int)Mathf.Abs((Bowl.RequiredFlour - Bowl.m_noofFlour) + 
-                (Bowl.RequiredEggs - Bowl.m_noofEggs) + 
-                (Bowl.RequiredButter - Bowl.m_noofButter) +
+                ((Bowl.RequiredEggs - Bowl.m_noofEggs) * 50) + 
+                ((Bowl.RequiredButter - Bowl.m_noofButter) * 100) +
                 (Bowl.RequiredSugar - Bowl.m_noofSugar));
 
             Rect titleRect = new Rect(Screen.width * 0.25f, Screen.height * 0.25f, Screen.width * 0.5f, Screen.height * 0.25f);
@@ -81,6 +84,8 @@ public class UI : MonoBehaviour {
             if (m_endTime == 0.0f)
             {
                 m_endTime = Time.time;
+                this.GetComponent<AudioSource>().clip = ingredientAccuracy <= 100 ? this.WinAudio : this.LooseAudio;
+                this.GetComponent<AudioSource>().Play();
             }
 
             int totalTime = 600 - (int)(m_endTime - m_startTime);

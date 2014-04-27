@@ -38,6 +38,7 @@ public class Oven : MonoBehaviour {
             if (m_startOpenTime == 0.0f)
             {
                 m_startOpenTime = Time.time;
+                this.GetComponent<AudioSource>().Play();
             }
 
             float time = (Time.time - m_startOpenTime) * 0.5f;
@@ -90,6 +91,7 @@ public class Oven : MonoBehaviour {
         {
             m_startOpenTime = Time.time;
             m_isOpeneing = true;
+            this.GetComponent<AudioSource>().Play();
         }        
     }
 

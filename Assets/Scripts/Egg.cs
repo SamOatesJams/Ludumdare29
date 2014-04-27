@@ -24,6 +24,8 @@ public class Egg : MonoBehaviour {
             this.collider.enabled = false;
             this.rigidbody.isKinematic = true;
 
+            this.GetComponent<AudioSource>().Play();
+
             foreach (Transform child in this.transform)
             {
                 child.rigidbody.isKinematic = false;
