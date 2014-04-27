@@ -3,18 +3,6 @@ using System.Collections;
 
 public class ModeController : MonoBehaviour {
 
-    public enum ContolMode
-    {
-        Move,
-        LeftHand,
-        RightHand
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    ContolMode m_currentMode = ContolMode.Move;
-
     /// <summary>
     /// 
     /// </summary>
@@ -55,17 +43,14 @@ public class ModeController : MonoBehaviour {
 
         if (isDpadUp)
         {
-            m_currentMode = ContolMode.Move;
             m_moveController.IsModeEnabled = true;
         }
         else if (isDpadLeft)
         {
-            m_currentMode = ContolMode.LeftHand;
             m_leftHandContoller.IsModeEnabled = true;
         }
         else if (isDpadRight)
         {
-            m_currentMode = ContolMode.RightHand;
             m_rightHandContoller.IsModeEnabled = true;
         }
 

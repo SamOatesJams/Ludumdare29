@@ -7,7 +7,7 @@ public class Flour : MonoBehaviour {
 
     public float UpsideDownDelta = 0.7f;
 
-    private float m_amount = 100.0f;
+    public float m_amount = 100.0f;
 
 	// Use this for initialization
 	void Start () {
