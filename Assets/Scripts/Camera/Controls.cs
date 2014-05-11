@@ -11,15 +11,13 @@ public class Controls : MonoBehaviour {
     private float m_startTime = 0.0f;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         m_startTime = Time.time;
 	}
-	
-	// Update is called once per frame
-	void FixedUpdate () {
-                
-        m_hasController = Input.GetJoystickNames().Length > 0;
 
+    void Update()
+    {
         if (Time.time - m_startTime > 5.0f)
         {
             if (Input.GetButton("AButton"))
@@ -27,6 +25,12 @@ public class Controls : MonoBehaviour {
                 Application.LoadLevel("Sandbox");
             }
         }
+    }
+	
+	// Update is called once per frame
+	void FixedUpdate () 
+    {                
+        m_hasController = Input.GetJoystickNames().Length > 0;
 	}
 
     void OnGUI()
