@@ -14,6 +14,7 @@ public class UI : MonoBehaviour {
     public AudioClip LooseAudio = null;
 
     public bool HasWon { get; set; }
+	private bool m_submittedScore = false;
 
     private float m_imageSize;
     private float m_currentY = 0.0f;
@@ -24,6 +25,7 @@ public class UI : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         m_startTime = Time.time;
+		KongregateAPI.Create ();
 	}
 	
 	// Update is called once per frame
@@ -99,6 +101,16 @@ public class UI : MonoBehaviour {
             titleRect.y += Screen.height * 0.25f;
 
             GUI.Label(titleRect, "Score " + score.ToString());
+
+			if (!m_submittedScore)
+			{
+				var kong = KongregateAPI.Create();
+				if (kong != null)
+				{
+					kong.SubmitStats("bakingskill", score);
+					m_submittedScore = true;
+				}
+			}
         }
     }
 
